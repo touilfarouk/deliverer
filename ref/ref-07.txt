@@ -1,0 +1,9 @@
+Add a @Provides method for GetSavedWordInfos in your WordInfoModule
+
+Update your WordInfoModule like this:
+
+@Provides
+@Singleton
+fun provideGetSavedWordInfosUseCase(repository: WordInfoRepository): GetSavedWordInfos {
+    return GetSavedWordInfos(repository)
+}

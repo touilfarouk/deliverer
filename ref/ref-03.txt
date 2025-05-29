@@ -1,0 +1,12 @@
+Step 2: Add repository method
+
+Update WordInfoRepository interface:
+
+fun getAllSavedWords(): Flow<List<WordInfo>>
+
+Implement it in WordInfoRepositoryImpl:
+
+override fun getAllSavedWords(): Flow<List<WordInfo>> = flow {
+    val infos = dao.getAllWordInfos().map { it.toWordInfo() }
+    emit(infos)
+}

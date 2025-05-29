@@ -1,0 +1,7 @@
+Step 1: Add method to fetch all saved words
+
+Update your WordInfoDao with the following:
+
+
+@Query("SELECT * FROM wordinfoentity")
+suspend fun getAllWordInfos(): List<WordInfoEntity>

@@ -1,0 +1,18 @@
+Setp 6 Add this to the view ViewModel
+
+init {
+    loadSavedWords()
+}
+
+private fun loadSavedWords() {
+    viewModelScope.launch {
+        getSavedWordInfos()
+            .onEach { savedWords ->
+                _state.value = state.value.copy(
+                    wordInfoItems = savedWords,
+                    isLoading = false
+                )
+            }
+            .launchIn(this)
+    }
+}

@@ -1,0 +1,7 @@
+Step 3: Add use case
+
+class GetSavedWordInfos(
+    private val repository: WordInfoRepository
+) {
+    operator fun invoke(): Flow<List<WordInfo>> = repository.getAllSavedWords()
+}

@@ -1,0 +1,10 @@
+ Step 4: ViewModel logic
+
+Inject GetSavedWordInfos into your WordInfoViewModel:
+
+@HiltViewModel
+class WordInfoViewModel @Inject constructor(
+    private val getWordInfo: GetWordInfo,
+    private val getSavedWordInfos: GetSavedWordInfos
+) : ViewModel() {
+}
