@@ -3,25 +3,25 @@ import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.reflect.TypeToken
 import com.plcoding.dictionary.core.util.JsonParser
-import com.plcoding.dictionary.feature_deliverer.domain.model.Deliverer
+import com.plcoding.dictionary.feature_deliverer.domain.model.Product
 
 @ProvidedTypeConverter
-class DelivererConverters(
+class ProductConverters(
     private val jsonParser: JsonParser
 ) {
     @TypeConverter
-    fun fromDeliverersJson(json: String): List<Deliverer> {
-        return jsonParser.fromJson<ArrayList<Deliverer>>(
+    fun fromProductJson(json: String): List<Product> {
+        return jsonParser.fromJson<ArrayList<Product>>(
             json,
-            object : TypeToken<ArrayList<Deliverer>>(){}.type
+            object : TypeToken<ArrayList<Product>>(){}.type
         ) ?: emptyList()
     }
 
     @TypeConverter
-    fun toDeliverersJson(deliverers: List<Deliverer>): String {
+    fun toProductJson(product: List<Product>): String {
         return jsonParser.toJson(
-            deliverers,
-            object : TypeToken<ArrayList<Deliverer>>(){}.type
+            product,
+            object : TypeToken<ArrayList<Product>>(){}.type
         ) ?: "[]"
     }
 }

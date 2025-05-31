@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.plcoding.dictionary.feature_deliverer.data.local.DelivererDao
+import com.plcoding.dictionary.feature_deliverer.data.local.ProductConverters
 import com.plcoding.dictionary.feature_deliverer.data.local.entity.DelivererEntity
 import com.plcoding.dictionary.feature_dictionary.data.local.Converters
 import com.plcoding.dictionary.feature_dictionary.data.local.WordInfoDao
@@ -13,7 +14,7 @@ import com.plcoding.dictionary.feature_dictionary.data.local.entity.WordInfoEnti
     entities = [WordInfoEntity::class, DelivererEntity::class],
     version = 5
 )
-@TypeConverters(Converters::class)
+@TypeConverters(Converters::class, ProductConverters::class)
 abstract class Database: RoomDatabase() {
 
     abstract val wordInfoDao: WordInfoDao
