@@ -20,5 +20,10 @@ fun DelivererIntoItem(
     Column(modifier = modifier) {
         Text(text = deliverer.name, fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.Black)
         Spacer(modifier = Modifier.height(16.dp))
+        deliverer.products?.forEach { name ->
+            Text(text = name.name, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = name.pricePerAmount, fontWeight = FontWeight.Bold)
+        }
     }
 }

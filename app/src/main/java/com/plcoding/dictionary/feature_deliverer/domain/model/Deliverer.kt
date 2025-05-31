@@ -1,5 +1,7 @@
 package com.plcoding.dictionary.feature_deliverer.domain.model
 
+
 data class Deliverer(
-    val name: String
+    val name: String,
+    val products: List<Product>?
 )

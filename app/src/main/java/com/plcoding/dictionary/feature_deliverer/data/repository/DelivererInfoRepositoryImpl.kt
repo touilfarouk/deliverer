@@ -22,7 +22,7 @@ class DelivererInfoRepositoryImpl(
         val delivererInfos = dao.getDelivererInfos(name).map { it.toDeliverer() }
         emit(Resource.Loading(data = delivererInfos))
         try {
-            val remoteDelivererInfos = api.getDelivererInfo(name)
+            val remoteDelivererInfos = api.getDelivererInfo(name).deliverer
             dao.deleteDelivererInfos(remoteDelivererInfos.map { it.name })
             dao.insertDelivererInfos(remoteDelivererInfos.map { it.toDelivererEntity() })
         } catch(e: HttpException) {

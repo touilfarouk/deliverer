@@ -12,11 +12,11 @@ import com.plcoding.dictionary.feature_dictionary.data.local.entity.WordInfoEnti
 
 @Database(
     entities = [WordInfoEntity::class, DelivererEntity::class],
-    version = 5
+    version = 10,
+    exportSchema = false
 )
 @TypeConverters(Converters::class, ProductConverters::class)
-abstract class Database: RoomDatabase() {
-
+abstract class Database : RoomDatabase() {
     abstract val wordInfoDao: WordInfoDao
     abstract val delivererDao: DelivererDao
 }

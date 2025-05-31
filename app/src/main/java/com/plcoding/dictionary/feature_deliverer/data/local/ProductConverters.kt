@@ -1,4 +1,5 @@
 package com.plcoding.dictionary.feature_deliverer.data.local
+
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.reflect.TypeToken
@@ -10,18 +11,21 @@ class ProductConverters(
     private val jsonParser: JsonParser
 ) {
     @TypeConverter
-    fun fromProductJson(json: String): List<Product> {
-        return jsonParser.fromJson<ArrayList<Product>>(
+    fun fromProductsJson(json: String?): List<Product> {
+        if (json.isNullOrEmpty()) return emptyList()
+        return jsonParser.fromJson<List<Product>>(
             json,
-            object : TypeToken<ArrayList<Product>>(){}.type
+            object : TypeToken<List<Product>>() {}.type
         ) ?: emptyList()
     }
 
+
     @TypeConverter
-    fun toProductJson(product: List<Product>): String {
+    fun toProductsJson(products: List<Product>?): String {
+        if (products == null) return "[]"
         return jsonParser.toJson(
-            product,
-            object : TypeToken<ArrayList<Product>>(){}.type
+            products,
+            object : TypeToken<List<Product>>() {}.type
         ) ?: "[]"
     }
 }
