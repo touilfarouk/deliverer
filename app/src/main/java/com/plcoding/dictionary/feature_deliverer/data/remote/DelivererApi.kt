@@ -13,6 +13,6 @@ interface DelivererApi {
     ): DelivererResponseDto
 
     companion object {
-        const val BASE_URL = "https://onta.dz/"
+        const val BASE_URL = ""
     }
 }
